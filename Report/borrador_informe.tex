@@ -1,0 +1,67 @@
+\documentclass[10pt,letterpaper]{article}
+%\usepackage[utf8]{inputenc} % utf8 es usado por defecto en la mayoría de los casos
+\usepackage[spanish]{babel}
+\usepackage{csquotes} % Usar solo si spanish es seleccionado en babel
+\usepackage{amsmath,amsfonts,amssymb,mathtools,bm} % Para funciones matemáticas especiales
+\usepackage[%
+    backend=biber, %bibtex8 o bibtex son antiguos y deben usarse solo por compatibilidad regresiva
+	style=authoryear,
+    natbib=true,
+	doi=false,
+	isbn=false,
+	url=false,
+	sorting=nyt,
+	giveninits=true,% Abbreviates names
+	uniquename=false,% Delete the initial in the reference. Compatible with firstinits/giveninits
+	maxbibnames=15, % Max number of author per citation in the bibliography
+	maxcitenames=2, % Max number of author per citation in the text
+	dashed=false,   % false: Get full name twice in Bibliography
+    ]{biblatex}
+%\bibliography{bibfile} % for bibtex8
+\addbibresource{bibfile.bib} % for biber
+
+% Paquetes opcionales
+\usepackage{graphicx,subfigure}
+\usepackage{siunitx} 	% Unidades de medida según SI
+\usepackage{booktabs}	% Para el toprule, midrule y bottomrule de las tablas
+\usepackage{verbatim}
+
+% Formato del borrador
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[right=2cm,left=2.5cm,top=2.5cm,bottom=2.0cm,headsep=1cm,footskip=1.5cm]{geometry} % Page margins
+
+% Headings
+\title{Análisis Carga--Deflexión de una viga simplemente apoyada}
+
+\author{Emilio Catalán Contreras\\
+       {\footnotesize Departamento de Ingeniería en Obras Civiles, Universidad de Santiago de Chile}
+}
+
+\date{\today}
+
+% Figures path
+\graphicspath{{figures/}} 
+
+% Document information
+\usepackage{hyperref}
+\hypersetup{
+        pdfauthor = {Emilio Catalán Contreras},
+        pdftitle = {Análisis carga-deflexión de una viga simplemente apoyada},
+        pdfsubject = {Comparación entre deflexión medida y predicción de Euler-Bernoulli},
+        pdfkeywords = {viga, deflexión, Euler-Bernoulli, carga puntual},
+}
+
+
+\begin{document}
+
+% First pages
+\maketitle
+
+% Text body
+\input{main_sections}
+
+% References
+\renewcommand*{\bibfont}{\footnotesize}
+\printbibliography%[sorting=nyt]
+
+\end{document}

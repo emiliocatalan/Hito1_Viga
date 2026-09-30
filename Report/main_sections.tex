@@ -1,0 +1,130 @@
+\begin{abstract}
+
+Se analiza la relación carga--deflexión de una viga simplemente apoyada de sección rectangular sometida a una carga puntual centrada, utilizando datos sintéticos proporcionados para fines docentes. El objetivo es construir un flujo de análisis reproducible que permita comparar las deflexiones medidas con la predicción lineal elástica de Euler--Bernoulli. Para ello, se calcularon el segundo momento de área de la sección y la deflexión teórica para cada nivel de carga, documentando las conversiones de unidades utilizadas. Los resultados muestran una buena concordancia entre los datos medidos y la respuesta teórica: la pendiente teórica de la relación carga--deflexión fue de 0,05000 mm/kN y la pendiente obtenida a partir de los datos medidos fue de 0,05117 mm/kN, con una diferencia relativa de aproximadamente 2,33\%. Esto indica que, dentro del rango analizado, la respuesta presenta un comportamiento prácticamente lineal y consistente con el modelo utilizado. Como limitación, el análisis corresponde a un caso idealizado y a datos sintéticos, por lo que sus resultados deben interpretarse dentro de los supuestos adoptados.
+
+\end{abstract}
+
+
+
+\section{Introducción}
+
+El presente trabajo analiza la relación entre la carga aplicada y la deflexión medida en el centro de una viga simplemente apoyada, de sección rectangular y sometida a una carga puntual centrada. El objetivo es comparar los datos entregados con la predicción lineal elástica obtenida mediante la teoría de Euler--Bernoulli y documentar el procedimiento de manera reproducible.
+
+Para desarrollar el análisis se utilizan los parámetros geométricos de la viga, el módulo de elasticidad y los datos de carga--deflexión proporcionados. A partir de esta información se calcula el segundo momento de área de la sección, la deflexión teórica para cada nivel de carga y la diferencia relativa respecto de los valores medidos.
+
+Además, se incorpora una verificación independiente mediante la comparación entre la pendiente teórica y la pendiente obtenida a partir de los datos medidos, con el fin de evaluar la consistencia del comportamiento carga--deflexión dentro del rango analizado.
+
+
+\section{Desarrollo}
+
+\subsection{Datos y supuestos}
+
+El caso analizado corresponde a una viga simplemente apoyada de longitud
+$L=\SI{4}{\metre}$, con una sección transversal rectangular de ancho
+$b=\SI{0.2}{\metre}$ y altura $h=\SI{0.4}{\metre}$. El material posee un módulo
+de elasticidad de $E=\SI{25}{\giga\pascal}$.
+
+La carga puntual $P$ se aplica en el centro de la luz y las deflexiones se
+evalúan en el mismo punto. Para realizar los cálculos en unidades coherentes,
+el módulo de elasticidad se convierte a pascales:
+
+\begin{equation}
+E=\SI{25}{\giga\pascal}
+ = 25\times10^{9}\,\si{\pascal}.
+\end{equation}
+
+Las cargas entregadas originalmente en kN también se convierten a N mediante:
+
+\begin{equation}
+P[\si{\newton}] = P[\si{\kilo\newton}] \times 1000.
+\end{equation}
+
+\subsection{Método de análisis}
+
+Para una sección rectangular, el segundo momento de área respecto del eje de
+flexión se obtiene mediante \citep{GereGoodno2013}:
+
+\begin{equation}
+I=\frac{b h^{3}}{12}.
+\label{eq:inercia}
+\end{equation}
+
+Reemplazando las dimensiones de la sección:
+
+\begin{equation}
+I=\frac{(0.2)(0.4)^3}{12}
+ = 0.001066667\,\si{\metre\tothe{4}}.
+\end{equation}
+
+La deflexión teórica en el centro de una viga simplemente apoyada sometida a
+una carga puntual centrada se calcula mediante la expresión de Euler--Bernoulli
+\citep{Hibbeler2018}:
+
+\begin{equation}
+\delta_{\mathrm{teo}}
+=
+\frac{P L^{3}}{48EI}.
+\label{eq:deflexion}
+\end{equation}
+
+Para cada nivel de carga se evaluó la Ec.~\ref{eq:deflexion} utilizando unidades
+del Sistema Internacional. Posteriormente, la deflexión calculada en metros se
+convirtió a milímetros mediante:
+
+\begin{equation}
+\delta[\si{\milli\metre}]
+=
+\delta[\si{\metre}] \times 1000.
+\end{equation}
+
+Finalmente, la diferencia relativa entre la deflexión medida y la teórica se
+calculó como:
+
+\begin{equation}
+\mathrm{Diferencia\ relativa}
+=
+\left|
+\frac{\delta_{\mathrm{medida}}-\delta_{\mathrm{teo}}}
+{\delta_{\mathrm{teo}}}
+\right|
+\times 100.
+\label{eq:diferencia}
+\end{equation}
+
+\subsection{Resultados y verificación}
+
+Los resultados muestran que la deflexión aumenta prácticamente de forma lineal con la carga aplicada. Para la carga máxima analizada de \SI{40}{\kilo\newton}, la deflexión teórica obtenida fue de \SI{2.00}{\milli\metre}, mientras que la deflexión medida fue de \SI{2.05}{\milli\metre}. En general, las diferencias relativas entre ambas series se mantuvieron bajas dentro del rango de carga considerado.
+
+La configuración del problema analizado se presenta en la Fig.~\ref{fig:esquema}, mientras que la comparación entre los valores medidos y teóricos se muestra en la Fig.~\ref{fig:carga_deflexion}.
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.75\textwidth]{esquema_viga}
+    \caption{Esquema de la viga simplemente apoyada sometida a una carga puntual centrada.}
+    \label{fig:esquema}
+\end{figure}
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.65\textwidth]{carga_deflexion}
+    \caption{Comparación entre la deflexión medida y la predicción teórica de Euler--Bernoulli.}
+    \label{fig:carga_deflexion}
+\end{figure}
+
+Como verificación adicional, se comparó la pendiente de la relación carga--deflexión. La pendiente teórica obtenida a partir del modelo fue de
+\SI{0.05000}{\milli\metre\per\kilo\newton}, mientras que el ajuste de los datos medidos entregó una pendiente de
+\SI{0.05117}{\milli\metre\per\kilo\newton}.
+
+La diferencia relativa entre ambas pendientes fue de aproximadamente 2.33\%, lo que respalda la consistencia entre los datos medidos y la predicción teórica dentro del rango analizado. 
+
+\section{Conclusiones y limitaciones}
+
+Los resultados muestran una buena concordancia entre las deflexiones medidas y las calculadas mediante la teoría de Euler--Bernoulli. Para la carga máxima de \SI{40}{\kilo\newton}, se obtuvo una deflexión medida de \SI{2.05}{\milli\metre} y una deflexión teórica de \SI{2.00}{\milli\metre}.
+
+La comparación entre las pendiente teórica y pendiente obtenida a partir de los datos medidos, presentó una diferencia relativa de aproximadamente 2,33\%, lo que indica que la respuesta carga--deflexión es prácticamente lineal y consistente con el modelo teórico dentro del rango analizado.
+
+Como limitación, el análisis utiliza datos sintéticos y supone un comportamiento lineal elástico idealizado. Por esta razón, no se consideran posibles variaciones del material, imperfecciones geométricas ni efectos no lineales que podrían presentarse en una estructura real.
+
+\section*{Declaración de uso de inteligencia artificial}
+
+Se utilizó ChatGPT como herramienta de apoyo para comprender las instrucciones de la actividad, organizar el procedimiento de análisis, revisar la redacción de la nota técnica y apoyar la documentación del trabajo. Los cálculos, resultados y contenidos incorporados fueron revisados y contrastados con los datos proporcionados. El autor realizó la revisión y verificación del contenido incorporado, manteniendo la responsabilidad final sobre la información presentada.
