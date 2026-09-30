@@ -17,8 +17,8 @@ El repositorio se organiza de la siguiente manera:
   - `analisis_viga.xlsx`
 
 - `Figures/`: contiene las figuras utilizadas.
-  - `esquema_viga.png`
-  - `carga_deflexion.png`
+  - `esquema_viga.png`: esquema original proporcionado para la actividad, conservado sin modificaciones.
+  - `carga_deflexion.png`: gráfico generado durante el análisis para comparar la deflexión medida y la teórica.
 
 - `Report/`: contiene los archivos fuente de la nota técnica en LaTeX, el PDF final y una copia de las figuras necesarias para recompilar el informe de manera independiente.
   - `borrador_informe.tex`
